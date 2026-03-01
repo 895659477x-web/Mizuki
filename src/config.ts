@@ -217,7 +217,6 @@ export const siteConfig: SiteConfig = {
     localFonts: ["萝莉体 第二版.ttf"],
     enableCompress: true, // 启用字体子集优化，减少字体文件大小
   },
-},
 
 showLastModified: true,
 };
