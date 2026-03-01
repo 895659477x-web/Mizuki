@@ -22,8 +22,8 @@ import { LinkPreset } from "./types/config";
 const SITE_LANG = "ja"; // 语言代码，例如：'en', 'zh_CN', 'ja' 等。
 const SITE_TIMEZONE = 8; //设置你的网站时区 from -12 to 12 default in UTC+8
 export const siteConfig: SiteConfig = {
-	title: "COCONUTPR",
-	subtitle: "COCONUTPR",
+	title: "Coconut",
+	subtitle: "Project",
 	siteURL: "https://mizuki-bz2.pages.dev/", // 请替换为你的站点URL，以斜杠结尾
 	siteStartDate: "2026-03-01", // 站点开始运行日期，用于站点统计组件计算运行天数
 
@@ -53,7 +53,7 @@ export const siteConfig: SiteConfig = {
 		// 显示模式："text-icon" 显示图标+文本，"logo" 仅显示Logo
 		mode: "logo",
 		// 顶栏标题文本
-		text: "COCONUTPR",
+		text: "Coconut",
 		// 顶栏标题图标路径，默认使用 public/assets/home/home.png
 		icon: "assets/home/home.png",
 		// 网站Logo图片路径
@@ -118,25 +118,11 @@ export const siteConfig: SiteConfig = {
 	banner: {
 		// 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播
 		src: {
-			desktop: [
-				"/assets/desktop-banner/1.webp",
-				"/assets/desktop-banner/2.webp",
-				"/assets/desktop-banner/3.webp",
-				"/assets/desktop-banner/4.webp",
-				"/assets/desktop-banner/5.webp",
-				"/assets/desktop-banner/6.webp",
-			], // 桌面横幅图片
-			mobile: [
-				"/assets/mobile-banner/1.webp",
-				"/assets/mobile-banner/2.webp",
-				"/assets/mobile-banner/3.webp",
-				"/assets/mobile-banner/4.webp",
-				"/assets/mobile-banner/5.webp",
-				"/assets/mobile-banner/6.webp",
-			], // 移动横幅图片
+			desktop: ["/assets/desktop-banner/1.webp"], // 桌面横幅图片
+			mobile: ["/assets/mobile-banner/1.webp"], // 移动横幅图片
 		}, // 使用本地横幅图片
 
-		position: "center", // 等同于 object-position，仅支持 'top', 'center', 'bottom'。默认为 'center'
+		position: "top", // 等同于 object-position，仅支持 'top', 'center', 'bottom'。默认为 'center'
 
 		carousel: {
 			enable: true, // 为 true 时：为多张图片启用轮播。为 false 时：从数组中随机显示一张图片
@@ -426,12 +412,12 @@ export const commentConfig: CommentConfig = {
 };
 
 export const shareConfig: ShareConfig = {
-	enable: true, // 启用分享功能
+	enable: false, // 启用分享功能
 };
 
 export const announcementConfig: AnnouncementConfig = {
 	title: "", // 公告标题，填空使用i18n字符串Key.announcement
-	content: "ブログへようこそ！これはサンプルの告知です", // 公告内容
+	content: "CoconutPrへようこそ！", // 公告内容
 	closable: true, // 允许用户关闭公告
 	link: {
 		enable: true, // 启用链接
@@ -571,16 +557,16 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 };
 
 export const sakuraConfig: SakuraConfig = {
-	enable: false, // 默认关闭樱花特效
-	sakuraNum: 21, // 樱花数量
+	enable: true, // 默认关闭樱花特效
+	sakuraNum: 18, // 樱花数量
 	limitTimes: -1, // 樱花越界限制次数，-1为无限循环
 	size: {
 		min: 0.5, // 樱花最小尺寸倍数
 		max: 1.1, // 樱花最大尺寸倍数
 	},
 	opacity: {
-		min: 0.3, // 樱花最小不透明度
-		max: 0.9, // 樱花最大不透明度
+		min: 0.2, // 樱花最小不透明度
+		max: 0.7, // 樱花最大不透明度
 	},
 	speed: {
 		horizontal: {
@@ -607,7 +593,7 @@ export const pioConfig: import("./types/config").PioConfig = {
 	mode: "draggable", // 默认为可拖拽模式
 	hiddenOnMobile: true, // 默认在移动设备上隐藏
 	dialog: {
-		welcome: "Welcome to Mizuki Website!", // 欢迎词
+		welcome: "Welcome to CoconutPr Website!", // 欢迎词
 		touch: [
 			"What are you doing?",
 			"Stop touching me!",
@@ -634,4 +620,3 @@ export const widgetConfigs = {
 } as const;
 
 // umamiConfig相关配置已移动至astro.config.mjs中,统计脚本请自行在Layout.astro文件的<head>中插入
-
