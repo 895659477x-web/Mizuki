@@ -160,13 +160,10 @@ export const siteConfig: SiteConfig = {
 
 		homeText: {
 			enable: true, // 在主页显示自定义文本
-			title: "わたしの部屋", // 主页横幅主标题
+			title: "FU Project", // 主页横幅主标题
 
 			subtitle: [
 				"特別なことはないけど、君がいると十分です",
-				"今でもあなたは私の光",
-				"君ってさ、知らないうちに私の毎日になってたよ",
-				"君と話すと、なんか毎日がちょっと楽しくなるんだ",
 				"今日はなんでもない日。でも、ちょっとだけいい日",
 			],
 			typewriter: {
