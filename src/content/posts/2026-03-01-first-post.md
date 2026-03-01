@@ -1,7 +1,6 @@
 ---
 title: はじめての投稿
-pubDate: 2026-03-01
-published: true
+published: 2026-03-01
 description: 最初のブログ記事です
 tags: ["日常", "ブログ"]
 ---
