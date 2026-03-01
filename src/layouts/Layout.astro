@@ -168,9 +168,24 @@ if (siteConfig.font) {
 	class="bg-(--page-bg) text-[14px] md:text-[16px]"
 	data-overlayscrollbars-initialize
 >
-	<head>
-		<!-- 第三方分析脚本 - 延迟加载优化 -->
-		<script is:inline>
+<head>
+
+  <!-- 预连接 Google 字体服务器（减少闪动） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- 主字体 -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- 第三方分析脚本 - 延迟加载优化 -->
+  <script is:inline>
 			// 使用 requestIdleCallback 延迟加载第三方脚本
 			function loadAnalytics() {
 				// Google Tag Manager
