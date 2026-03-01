@@ -22,7 +22,7 @@ import { LinkPreset } from "./types/config";
 const SITE_LANG = "ja"; // 语言代码，例如：'en', 'zh_CN', 'ja' 等。
 const SITE_TIMEZONE = 8; //设置你的网站时区 from -12 to 12 default in UTC+8
 export const siteConfig: SiteConfig = {
-	title: "Mizuki",
+	title: "COCONUTPR",
 	subtitle: "One demo website",
 	siteURL: "https://mizuki.mysqil.com/", // 请替换为你的站点URL，以斜杠结尾
 	siteStartDate: "2025-01-01", // 站点开始运行日期，用于站点统计组件计算运行天数
@@ -227,13 +227,8 @@ export const siteConfig: SiteConfig = {
 };
 export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
 	src: {
-		desktop: [
-			"/assets/desktop-banner/1.webp",
-					], // 桌面横幅图片
-		mobile: [
-			"/assets/mobile-banner/1.webp",
-
-		], // 移动横幅图片
+		desktop: ["/assets/desktop-banner/1.webp"], // 桌面横幅图片
+		mobile: ["/assets/mobile-banner/1.webp"], // 移动横幅图片
 	}, // 使用本地横幅图片
 	position: "top", // 壁纸位置，等同于 object-position
 	carousel: {
@@ -639,3 +634,4 @@ export const widgetConfigs = {
 } as const;
 
 // umamiConfig相关配置已移动至astro.config.mjs中,统计脚本请自行在Layout.astro文件的<head>中插入
+
