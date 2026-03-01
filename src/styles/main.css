@@ -744,3 +744,23 @@ html {
 :root:not(.dark) .custom-md spoiler {
   --_spoiler-mask: color-mix(in oklch, var(--primary) 55%, white 45%);
 }
+/* === 禁用 Banner 背景的所有动画与过渡，防止跳闪 === */
+/* === 完全禁用 Banner 模式的动画与过渡（彻底版） === */
+.banner,
+.banner *,
+.banner-background,
+.banner-background *,
+.wallpaper-banner,
+.wallpaper-banner *,
+.wallpaper-wrapper,
+.wallpaper-wrapper * {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+  will-change: auto !important;
+}
+
+/* 禁止 Banner 初始淡入 */
+.wallpaper-banner {
+  opacity: 1 !important;
+}
