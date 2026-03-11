@@ -374,14 +374,14 @@ export const shareConfig: ShareConfig = {
 };
 
 export const announcementConfig: AnnouncementConfig = {
-	title: "", // 公告标题，填空使用i18n字符串Key.announcement
-	content: "\u6708\u304b\u3089\u5c4a\u304f\u8a08\u753b\u306e\u4fbf\u308a\u3002\u3054\u9023\u7d61\u306f 895659477x@gmail.com \u3078\u3002", // 公告内容
-	closable: false, // 允许用户关闭公告
+	title: "", // ??????????????????i18n??????Key.announcement
+	content: "\u6708\u304b\u3089\u5c4a\u304f\u8a08\u753b\u306e\u4fbf\u308a\u3002\u3054\u9023\u7d61\u306f 895659477x@gmail.com \u3078\u3002", // ???????
+	closable: false, // ????????????????
 	link: {
-		enable: false, // 启用链接
-		text: "\u8a73\u3057\u304f\u898b\u308b", // 链接文本
-		url: "/about/", // 链接 URL
-		external: false, // 内部链接
+		enable: true, // ????????
+		text: "kaguyaai.com", // ???????
+		url: "https://kaguyaai.com", // ???? URL
+		external: true, // ???????
 	},
 };
 
