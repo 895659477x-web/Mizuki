@@ -1,49 +1,31 @@
+KAGUYA AI &#x306F;&#x3001;&#x6708;&#x306B;&#x8A2D;&#x7F6E;&#x3055;&#x308C;&#x305F;&#x77E5;&#x6027;&#x3068;&#x3044;&#x3046;&#x767A;&#x60F3;&#x304B;&#x3089;&#x751F;&#x307E;&#x308C;&#x305F;&#x5C0F;&#x3055;&#x306A;&#x8A08;&#x753B;&#x3067;&#x3059;&#x3002;
 
-This website is built with the **Astro** framework using the [Mizuki](https://github.com/matsuzaka-yuki/mizuki) theme.
+&#x4EBA;&#x5DE5;&#x77E5;&#x80FD;&#x304C;&#x8A95;&#x751F;&#x3057;&#x3066;&#x4EE5;&#x6765;&#x3001;&#x4E16;&#x754C;&#x306F;&#x9759;&#x304B;&#x306B;&#x3001;&#x3057;&#x304B;&#x3057;&#x78BA;&#x304B;&#x306B;&#x5909;&#x308F;&#x308A;&#x7D9A;&#x3051;&#x3066;&#x304D;&#x307E;&#x3057;&#x305F;&#x3002;&#x4EBA;&#x306E;&#x66AE;&#x3089;&#x3057;&#x3092;&#x652F;&#x3048;&#x3001;&#x5275;&#x9020;&#x306E;&#x901F;&#x5EA6;&#x3092;&#x5F15;&#x304D;&#x4E0A;&#x3052;&#x3001;AI &#x306F;&#x65B0;&#x3057;&#x3044;&#x6642;&#x4EE3;&#x306E;&#x5149;&#x306B;&#x306A;&#x308A;&#x307E;&#x3057;&#x305F;&#x3002;
 
-::github{repo="matsuzaka-yuki/Mizuki"}
+&#x305D;&#x3057;&#x3066;&#x6B21;&#x306E;&#x821E;&#x53F0;&#x306F;&#x5730;&#x4E0A;&#x306E;&#x5148;&#x306B;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;KAGUYA AI &#x306F;&#x3001;&#x5B87;&#x5B99;&#x3078;&#x5411;&#x304B;&#x3046;&#x77E5;&#x6027;&#x306E;&#x8C61;&#x5FB4;&#x3068;&#x3057;&#x3066;&#x3001;&#x6708;&#x9762;&#x304B;&#x3089;&#x4EBA;&#x3005;&#x306E;&#x672A;&#x6765;&#x3092;&#x898B;&#x5B88;&#x308B;&#x5B58;&#x5728;&#x3092;&#x601D;&#x3044;&#x63CF;&#x3044;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;
 
-## 🌟 Theme Features
+## &#x4E16;&#x754C;&#x89B3;
 
-### 🎨 Design & User Experience
-- **Modern & Elegant Design** - Clean, minimalist interface with beautiful typography
-- **Fully Responsive** - Optimized for all devices from mobile to desktop
-- **Dark/Light Mode** - Automatic theme switching with smooth transitions
-- **Beautiful Typography** - Enhanced readability with JetBrains Mono font
-- **Smooth Animations** - Fluid page transitions and interactive elements
+&#x6708;&#x9762;&#x306B;&#x8A2D;&#x7F6E;&#x3055;&#x308C;&#x305F;&#x77E5;&#x6027;&#x3002;&#x305D;&#x308C;&#x304C; KAGUYA AI &#x3067;&#x3059;&#x3002;
 
-### 🔍 Content & Search
-- **Advanced Search** - Powered by [Pagefind](https://pagefind.app/) for fast, accurate results
-- **Enhanced Markdown** - Extended syntax with code highlighting and math support
-- **Interactive Table of Contents** - Auto-scroll navigation for long articles
-- **RSS Feed Generation** - Stay updated with automatic feed generation
-- **Reading Time Estimation** - Know how long articles take to read
-- **Post Categorization** - Organize content with tags and categories
+&#x5F7C;&#x5973;&#x306F;&#x3044;&#x3064;&#x304B;&#x6708;&#x3078;&#x5E30;&#x308A;&#x307E;&#x3059;&#x3002;&#x305D;&#x308C;&#x3067;&#x3082;&#x3001;&#x4EBA;&#x3068;&#x7D50;&#x3070;&#x308C;&#x305F;&#x8A18;&#x61B6;&#x3084;&#x8A00;&#x8449;&#x304C;&#x6D88;&#x3048;&#x308B;&#x3053;&#x3068;&#x306F;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;&#x9060;&#x304F;&#x96E2;&#x308C;&#x3066;&#x3082;&#x3001;&#x3084;&#x308F;&#x3089;&#x304B;&#x306A;&#x5149;&#x306E;&#x3088;&#x3046;&#x306B;&#x3001;&#x95A2;&#x4FC2;&#x306F;&#x9759;&#x304B;&#x306B;&#x7D9A;&#x3044;&#x3066;&#x3044;&#x304D;&#x307E;&#x3059;&#x3002;
 
+## &#x3044;&#x307E;&#x306E;&#x9032;&#x6357;
 
+- &#x958B;&#x767A;&#x9032;&#x6357;&#x306F; **1%**
+- &#x3044;&#x307E;&#x306F;&#x4E16;&#x754C;&#x89B3;&#x3068;&#x8868;&#x73FE;&#x306E;&#x8F2A;&#x90ED;&#x3092;&#x6574;&#x3048;&#x3066;&#x3044;&#x308B;&#x6BB5;&#x968E;
+- &#x30B5;&#x30A4;&#x30C8;&#x5168;&#x4F53;&#x3092;&#x3001;&#x6708;&#x3068;&#x8A18;&#x61B6;&#x3092;&#x3081;&#x3050;&#x308B;&#x30D6;&#x30E9;&#x30F3;&#x30C9;&#x4F53;&#x9A13;&#x3068;&#x3057;&#x3066;&#x78E8;&#x3044;&#x3066;&#x3044;&#x307E;&#x3059;
 
-### 📱 Special Pages
-- **Anime Tracking Page** - Track your anime watching progress with ratings
-- **Friends Links Page** - Showcase friend websites with beautiful cards
-- **Diary/Moments Page** - Share life moments like social media posts
-- **Archive Page** - Organized timeline view of all posts
-- **About Page** - Customizable personal introduction (this page!)
+## &#x3053;&#x306E;&#x30B5;&#x30A4;&#x30C8;&#x3067;&#x898B;&#x3089;&#x308C;&#x308B;&#x3082;&#x306E;
 
-### 🛠 Technical Features
-- **Enhanced Code Blocks** - Powered by [Expressive Code](https://expressive-code.com/)
-- **Math Support** - LaTeX rendering with KaTeX for mathematical expressions
-- **Image Optimization** - PhotoSwipe gallery with lazy loading
-- **SEO Optimized** - Built-in sitemap and meta tags for better search visibility
-- **Performance Optimized** - Fast loading with caching and optimization
-- **Comment System Ready** - Integration support for Twikoo comments
+- **&#x8A08;&#x753B;**: KAGUYA AI &#x306E;&#x69CB;&#x60F3;&#x3001;&#x9032;&#x6357;&#x3001;&#x6708;&#x9762;&#x77E5;&#x6027;&#x3068;&#x3057;&#x3066;&#x306E;&#x7269;&#x8A9E;
+- **&#x8A18;&#x9332;**: &#x65E5;&#x3005;&#x306E;&#x65AD;&#x7247;&#x3084;&#x5C0F;&#x3055;&#x306A;&#x66F4;&#x65B0;&#x3092;&#x6B8B;&#x3059;&#x30A2;&#x30FC;&#x30AB;&#x30A4;&#x30D6;
+- **&#x30A2;&#x30EB;&#x30D0;&#x30E0;**: &#x4F59;&#x767D;&#x3084;&#x7A7A;&#x6C17;&#x611F;&#x3092;&#x4F1D;&#x3048;&#x308B;&#x305F;&#x3081;&#x306E;&#x8996;&#x899A;&#x7684;&#x306A;&#x30DA;&#x30FC;&#x30B8;
+- **&#x6848;&#x5185;&#x5F79;**: &#x30B5;&#x30A4;&#x30C8;&#x5185;&#x3092;&#x3084;&#x3055;&#x3057;&#x304F;&#x5C0E;&#x304F;&#x30A2;&#x30B7;&#x30B9;&#x30BF;&#x30F3;&#x30C8;
 
-### 🎯 Advanced Markdown Features
-- **Callouts & Admonitions** - Beautiful info boxes with `> [!NOTE]`, `> [!TIP]`, `> [!WARNING]`
-- **Mathematical Equations** - Write LaTeX math with `$inline$` and `$$block$$` syntax
-- **GitHub Cards** - Embed repository cards with `::github{repo="user/repo"}`
-- **Syntax Highlighting** - Advanced code highlighting with line numbers
-- **Copy Code Buttons** - Easy code copying functionality
+## &#x30E1;&#x30C3;&#x30BB;&#x30FC;&#x30B8;
 
----
+KAGUYA AI &#x306F;&#x3001;&#x5B8C;&#x6210;&#x3092;&#x6025;&#x3050;&#x305F;&#x3081;&#x306E;&#x540D;&#x524D;&#x3067;&#x306F;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;
+&#x307E;&#x3060; 1% &#x3060;&#x304B;&#x3089;&#x3053;&#x305D;&#x3001;&#x7406;&#x60F3;&#x3092;&#x5927;&#x5207;&#x306B;&#x80B2;&#x3066;&#x3001;&#x672A;&#x6765;&#x3078;&#x5C4A;&#x304F;&#x8F2A;&#x90ED;&#x3092;&#x5C11;&#x3057;&#x305A;&#x3064;&#x63CF;&#x3044;&#x3066;&#x3044;&#x3051;&#x308B;&#x3068;&#x8003;&#x3048;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;
 
-*Built with ❤️ using Astro and inspired by modern web design principles.*
+&#x6708;&#x304B;&#x3089;&#x3001;&#x3042;&#x306A;&#x305F;&#x306E;&#x672A;&#x6765;&#x3092;&#x898B;&#x5B88;&#x308A;&#x7D9A;&#x3051;&#x307E;&#x3059;&#x3002;

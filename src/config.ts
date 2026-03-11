@@ -51,7 +51,7 @@ export const siteConfig: SiteConfig = {
 	// 顶栏标题配置
 	navbarTitle: {
 		// 显示模式："text-icon" 显示图标+文本，"logo" 仅显示Logo
-		mode: "logo",
+		mode: "text-icon",
 		// 顶栏标题文本
 		text: "Coconut",
 		// 顶栏标题图标路径，默认使用 public/assets/home/home.png
@@ -312,7 +312,7 @@ export const navBarConfig: NavBarConfig = {
 export const profileConfig: ProfileConfig = {
 	avatar: "assets/images/avatar.webp", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
 	name: "Coconut Project",
-	bio: "世界は大きい、君は行かなければならない",
+	bio: "\u4e16\u754c\u306f\u5927\u304d\u3044\u3001\u541b\u306f\u884c\u304b\u306a\u3051\u308c\u3070\u306a\u3089\u306a\u3044",
 	typewriter: {
 		enable: true, // 启用个人简介打字机效果
 		speed: 80, // 打字速度（毫秒）
@@ -380,11 +380,11 @@ export const shareConfig: ShareConfig = {
 
 export const announcementConfig: AnnouncementConfig = {
 	title: "", // 公告标题，填空使用i18n字符串Key.announcement
-	content: "CoconutPrへようこそ！ 895659477x@gmai.com", // 公告内容
+	content: "\u6708\u304b\u3089\u5c4a\u304f\u8a08\u753b\u306e\u4fbf\u308a\u3002\u3054\u9023\u7d61\u306f 895659477x@gmail.com \u3078\u3002", // 公告内容
 	closable: false, // 允许用户关闭公告
 	link: {
 		enable: false, // 启用链接
-		text: "Learn More", // 链接文本
+		text: "\u8a73\u3057\u304f\u898b\u308b", // 链接文本
 		url: "/about/", // 链接 URL
 		external: false, // 内部链接
 	},
@@ -556,16 +556,16 @@ export const pioConfig: import("./types/config").PioConfig = {
 	mode: "draggable", // 默认为可拖拽模式
 	hiddenOnMobile: true, // 默认在移动设备上隐藏
 	dialog: {
-		welcome: "Welcome to CoconutPr Website!", // 欢迎词
+		welcome: "\u004b\u0041\u0047\u0055\u0059\u0041 \u0041\u0049 \u3078\u3088\u3046\u3053\u305d\u3002\u6708\u304b\u3089\u9759\u304b\u306b\u3054\u6848\u5185\u3057\u307e\u3059\u3002", // 欢迎词
 		touch: [
-			"What are you doing?",
-			"Stop touching me!",
-			"HENTAI!",
-			"Don't bully me like that!",
+			"\u305d\u3093\u306a\u306b\u8fd1\u304f\u3067\u898b\u308b\u306e\uff1f",
+			"\u304f\u3059\u3050\u3063\u305f\u3044\u306e\u3067\u3001\u3084\u3055\u3057\u304f\u304a\u9858\u3044\u3057\u307e\u3059\u3002",
+			"\u6708\u306e\u6c17\u914d\u304c\u4e71\u308c\u3066\u3057\u307e\u3044\u307e\u3059\u3002",
+			"\u3082\u3046\u5c11\u3057\u9759\u304b\u306b\u89e6\u308c\u3066\u304f\u3060\u3055\u3044\u306d\u3002",
 		], // 触摸提示
-		home: "Click here to go back to homepage!", // 首页提示
-		skin: ["Want to see my new outfit?", "The new outfit looks great~"], // 换装提示
-		close: "QWQ See you next time~", // 关闭提示
+		home: "\u3053\u3053\u304b\u3089\u6708\u306e\u5165\u53e3\u3078\u623b\u308c\u307e\u3059\u3002", // 首页提示
+		skin: ["\u65b0\u3057\u3044\u88c5\u3044\u3001\u898b\u3066\u307f\u307e\u3059\u304b\u3002", "\u6708\u5149\u306b\u4f3c\u5408\u3046\u59ff\u3092\u9078\u3093\u3067\u307f\u307e\u3057\u305f\u3002"], // 换装提示
+		close: "\u307e\u305f\u6708\u660e\u304b\u308a\u306e\u4e0b\u3067\u4f1a\u3044\u307e\u3057\u3087\u3046\u3002", // 关闭提示
 		link: "kaguyaai.com", // 关于链接
 	},
 };

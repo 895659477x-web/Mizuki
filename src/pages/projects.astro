@@ -1,322 +1,366 @@
 ---
 import { siteConfig } from "../config";
-import { UNCATEGORIZED } from "../constants/constants";
-import {
-	getAllTechStack,
-	getFeaturedProjects,
-	getProjectStats,
-	getProjectsByCategory,
-	projectsData,
-} from "../data/projects";
-import I18nKey from "../i18n/i18nKey";
-import { i18n } from "../i18n/translation";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
+import { projectsData } from "../data/projects";
 
-// import { loadIconify } from "../utils/icon-loader";
-
-// 检查项目页面是否启用
 if (!siteConfig.featurePages.projects) {
 	return Astro.redirect("/404/");
 }
 
-// const { lang } = Astro.props;
-
-// 加载Iconify图标库 - 移至客户端执行
-// loadIconify().catch((error) => {
-// 	console.error("Failed to load Iconify:", error);
-// });
-
-// 获取项目统计信息
-const stats = getProjectStats();
-const featuredProjects = getFeaturedProjects();
-const allTechStack = getAllTechStack();
-
-// 获取所有分类
-const categories = [
-	...new Set(projectsData.map((project) => project.category)),
+const project = projectsData[0];
+const pageMetaTitle = "KAGUYA AI \u958b\u767a\u30d7\u30ed\u30b8\u30a7\u30af\u30c8";
+const heroTitle = "\u6708\u5149\u306e\u5f7c\u65b9\u3067\u3001\u3042\u306a\u305f\u3092\u5f85\u3064\u3002";
+const heroSubtitle = "\u6708\u306e\u5f7c\u65b9\u304b\u3089\u3001\u672a\u6765\u3092\u3064\u306a\u3050\u3002";
+const progressLabel = "\u958b\u767a\u9032\u6357";
+const progressNote = "\u307e\u3060\u59cb\u307e\u3063\u305f\u3070\u304b\u308a\u306e\u958b\u767a\u8a08\u753b\u3002\u305d\u308c\u3067\u3082\u3001\u672a\u6765\u3078\u5c4a\u304f\u5149\u306f\u3053\u3053\u304b\u3089\u751f\u307e\u308c\u3066\u3044\u304d\u307e\u3059\u3002";
+const metrics = [
+	{ value: "\u958b\u767a", label: "KAGUYA AI \u30d7\u30ed\u30b8\u30a7\u30af\u30c8" },
+	{ value: "\u6708\u5149", label: "\u4e3b\u305f\u308b\u60c5\u7dd2\u8a2d\u8a08" },
+	{ value: "\u672a\u6765", label: "\u4eba\u3068\u77e5\u6027\u3092\u7d50\u3076\u8996\u70b9" },
 ];
-
-// 按分类获取项目
-const projectsByCategory = categories.reduce(
-	(acc, category) => {
-		acc[category] = getProjectsByCategory(category);
-		return acc;
-	},
-	{} as Record<string, typeof projectsData>,
-);
-
-const title = i18n(I18nKey.projects);
-const subtitle = i18n(I18nKey.projectsSubtitle);
-
-// 获取分类文本的国际化翻译
-const getCategoryText = (category: string) => {
-	switch (category) {
-		case "web":
-			return i18n(I18nKey.projectsWeb);
-		case "mobile":
-			return i18n(I18nKey.projectsMobile);
-		case "desktop":
-			return i18n(I18nKey.projectsDesktop);
-		case "other":
-			return i18n(I18nKey.projectsOther);
-		case UNCATEGORIZED:
-			return i18n(I18nKey.uncategorized);
-		default:
-			return category;
-	}
-};
+const conceptTitle = "\u30c7\u30b6\u30a4\u30f3\u30b3\u30f3\u30bb\u30d7\u30c8";
+const conceptLines = [
+	"\u4eba\u5de5\u77e5\u80fd\u304c\u751f\u307e\u308c\u3066\u304b\u3089\u3001",
+	"\u4e16\u754c\u306f\u5c11\u3057\u305a\u3064\u5909\u308f\u308a\u59cb\u3081\u307e\u3057\u305f\u3002",
+	"",
+	"\u65b0\u3057\u3044\u3053\u3068\u306b\u51fa\u4f1a\u3044\u3001",
+	"\u672a\u6765\u306f\u524d\u3088\u308a\u3082\u8fd1\u304f\u611f\u3058\u3089\u308c\u308b\u3088\u3046\u306b\u306a\u308a\u307e\u3057\u305f\u3002",
+	"",
+	"\u3084\u304c\u3066\u77e5\u6027\u306f\u3001\u7a7a\u306e\u5411\u3053\u3046\u3078\u3002",
+	"",
+	"\u9060\u304f\u306b\u3044\u3066\u3082\u3001",
+	"\u60f3\u3044\u306f\u3061\u3083\u3093\u3068\u5c4a\u304d\u307e\u3059\u3002",
+	"",
+	"Kaguya AI \u306f\u3001",
+	"\u3042\u306a\u305f\u3068\u672a\u6765\u3092\u3064\u306a\u3050\u5b58\u5728\u3002",
+	"",
+	"\u6708\u660e\u304b\u308a\u306e\u3088\u3046\u306b\u3001",
+	"\u9759\u304b\u306b\u5bc4\u308a\u6dfb\u3044\u306a\u304c\u3089\u3002",
+	"",
+	"\u3044\u3064\u307e\u3067\u3082\u3001\u3042\u306a\u305f\u306e\u305d\u3070\u306b\u3002",
+];
+const summaryTitle = "\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u6982\u8981";
+const focusTitle = "\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u7126\u70b9";
+const closingLabel = "Closing Message";
+const closingText = "\u6708\u660e\u304b\u308a\u306e\u3088\u3046\u306b\u3001\u9759\u304b\u306b\u5bc4\u308a\u6dfb\u3044\u306a\u304c\u3089\u3002\u3044\u3064\u307e\u3067\u3082\u3001\u3042\u306a\u305f\u306e\u305d\u3070\u306b\u3002";
 ---
 
-<MainGridLayout title={title} description={subtitle}>
-  <!-- 引入右侧边栏布局管理器 -->
-  <script>
-    import('../scripts/right-sidebar-layout.js');
-    import { loadIconify } from "../utils/icon-loader";
-    
-    // 加载Iconify图标库
-    loadIconify().catch((error) => {
-      console.error("Failed to load Iconify:", error);
-    });
-  </script>
-  <div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
-    <div class="card-base z-10 px-9 py-6 relative w-full">
-      <!-- 页面标题 -->
-      <div class="flex flex-col items-start justify-center mb-8">
-        <h1 class="text-4xl font-bold text-90 mb-2 relative
-                  before:w-1 before:h-8 before:rounded-md before:bg-(--primary)
-                  before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-4">
-          {i18n(I18nKey.projects)}
-        </h1>
-        <p class="text-lg text-60">
-          {i18n(I18nKey.projectsSubtitle)}
-        </p>
-      </div>
+<MainGridLayout title={pageMetaTitle} description={heroTitle}>
+	<section class="kaguya-page card-base relative overflow-hidden px-8 py-10 md:px-12 md:py-14">
+		<div class="kaguya-orbit kaguya-orbit-one"></div>
+		<div class="kaguya-orbit kaguya-orbit-two"></div>
+		<div class="kaguya-glow"></div>
 
-      <!-- 统计信息 -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-        <div class="bg-blue-500/10 dark:bg-blue-900/30 rounded-lg p-4 border border-blue-500/20 dark:border-blue-900/30 hover:shadow-lg transition-shadow duration-300">
-          <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">{stats.total}</div>
-          <div class="text-sm text-blue-600/70 dark:text-blue-400/70">{i18n(I18nKey.projectsTotal)}</div>
-        </div>
-        <div class="bg-green-500/10 dark:bg-green-900/30 rounded-lg p-4 border border-green-500/20 dark:border-green-900/30 hover:shadow-lg transition-shadow duration-300">
-          <div class="text-2xl font-bold text-green-600 dark:text-green-400">{stats.byStatus.completed}</div>
-          <div class="text-sm text-green-600/70 dark:text-green-400/70">{i18n(I18nKey.projectsCompleted)}</div>
-        </div>
-        <div class="bg-yellow-500/10 dark:bg-yellow-900/30 rounded-lg p-4 border border-yellow-500/20 dark:border-yellow-900/30 hover:shadow-lg transition-shadow duration-300">
-          <div class="text-2xl font-bold text-yellow-600 dark:text-yellow-400">{stats.byStatus.inProgress}</div>
-          <div class="text-sm text-yellow-600/70 dark:text-yellow-400/70">{i18n(I18nKey.projectsInProgress)}</div>
-        </div>
-        <div class="bg-purple-500/10 dark:bg-purple-900/30 rounded-lg p-4 border border-purple-500/20 dark:border-purple-900/30 hover:shadow-lg transition-shadow duration-300">
-          <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">{allTechStack.length}</div>
-          <div class="text-sm text-purple-600/70 dark:text-purple-400/70">{i18n(I18nKey.projectsTechStack)}</div>
-        </div>
-      </div>
+		<div class="relative z-10 max-w-5xl">
+			<div class="mb-8">
+				<p class="kaguya-kicker">KAGUYA AI DEVELOPMENT PROJECT</p>
+				<h1 class="kaguya-title">{heroTitle}</h1>
+				<p class="kaguya-subtitle">{heroSubtitle}</p>
+			</div>
 
-      <!-- 特色项目 -->
-      {featuredProjects.length > 0 && (
-        <div class="mb-8">
-          <h2 class="text-2xl font-bold text-90 mb-4 relative
-                    before:w-1 before:h-6 before:rounded-md before:bg-(--primary)
-                    before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-4">
-            {i18n(I18nKey.projectsFeatured)}
-          </h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {featuredProjects.map((project) => (
-              <div class="bg-transparent rounded-lg border border-(--line-divider) overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                {project.image && (
-                  <div class="aspect-video overflow-hidden">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                )}
-                <div class="p-6">
-                  <div class="flex items-start justify-between mb-3">
-                    <h3 class="text-xl font-semibold text-90">
-                      {project.title}
-                    </h3>
-                    <span class={`px-2 py-1 text-xs rounded-full ${
-                      project.status === 'completed' 
-                        ? 'bg-green-600/20 text-green-700 dark:bg-green-900/30 dark:text-green-400'
-                        : project.status === 'in-progress'
-                        ? 'bg-yellow-600/20 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400'
-                        : 'bg-gray-600/20 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400'
-                    }`}>
-                      {i18n(project.status === 'completed' ? I18nKey.projectsCompleted : 
-                            project.status === 'in-progress' ? I18nKey.projectsInProgress : 
-                            I18nKey.projectsPlanned)}
-                    </span>
-                  </div>
-                  <p class="text-60 mb-4 line-clamp-2">
-                    {project.description}
-                  </p>
-                  <div class="flex flex-wrap gap-2 mb-4">
-                    {project.techStack.slice(0, 4).map((tech) => (
-                      <span class="px-2 py-1 text-xs bg-blue-600/20 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 rounded">
-                        {tech}
-                      </span>
-                    ))}
-                    {project.techStack.length > 4 && (
-                      <span class="px-2 py-1 text-xs bg-gray-600/20 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400 rounded">
-                        +{project.techStack.length - 4}
-                      </span>
-                    )}
-                  </div>
-                  <div class="flex flex-wrap gap-2 text-sm">
-                    {project.visitUrl && (
-                      <a 
-                        href={project.visitUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        class="btn-gradient btn-gradient-primary btn-gradient-md"
-                      >
-                        <iconify-icon icon="material-symbols:open-in-new" width="18" height="18"></iconify-icon>
-                        {i18n(I18nKey.projectsVisit)}
-                      </a>
-                    )}
-                    {project.sourceCode && (
-                      <a 
-                        href={project.sourceCode} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        class="btn-gradient btn-github btn-gradient-md"
-                      >
-                        <iconify-icon icon="mdi:github" width="18" height="18"></iconify-icon>
-                        {i18n(I18nKey.projectsGitHub)}
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+			<div class="kaguya-hero-grid">
+				<div class="kaguya-panel">
+					<p class="kaguya-panel-label">{progressLabel}</p>
+					<div class="kaguya-progress-row">
+						<span class="kaguya-progress-value">1%</span>
+						<span class="kaguya-progress-status">IN DEVELOPMENT</span>
+					</div>
+					<div class="kaguya-progress-track" aria-hidden="true">
+						<div class="kaguya-progress-fill"></div>
+					</div>
+					<p class="kaguya-progress-note">{progressNote}</p>
+				</div>
 
-      <!-- 按分类展示项目 -->
-      <div class="space-y-8">
-        {categories.map((category) => {
-          const categoryProjects = projectsByCategory[category];
-          if (categoryProjects.length === 0) return null;
-          
-          return (
-            <div>
-              <h2 class="text-2xl font-bold text-90 mb-4 relative
-                        before:w-1 before:h-6 before:rounded-md before:bg-(--primary)
-                        before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-4">
-                {getCategoryText(category)}
-                <span class="text-lg font-normal text-60 ml-2">
-                  ({categoryProjects.length})
-                </span>
-              </h2>
-              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {categoryProjects.map((project) => (
-                  <div class="bg-transparent rounded-lg border border-(--line-divider) overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                    {project.image && (
-                      <div class="aspect-video overflow-hidden">
-                        <img 
-                          src={project.image} 
-                          alt={project.title}
-                          class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    )}
-                    <div class="p-4">
-                      <div class="flex items-start justify-between mb-2">
-                        <h3 class="text-lg font-semibold text-90 line-clamp-1">
-                          {project.title}
-                        </h3>
-                        <span class={`px-2 py-1 text-xs rounded-full shrink-0 ml-2 ${
-                          project.status === 'completed' 
-                            ? 'bg-green-600/20 text-green-700 dark:bg-green-900/30 dark:text-green-400'
-                            : project.status === 'in-progress'
-                            ? 'bg-yellow-600/20 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400'
-                            : 'bg-gray-600/20 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400'
-                        }`}>
-                          {i18n(project.status === 'completed' ? I18nKey.projectsCompleted : 
-                                project.status === 'in-progress' ? I18nKey.projectsInProgress : 
-                                I18nKey.projectsPlanned)}
-                        </span>
-                      </div>
-                      <p class="text-60 mb-3 text-sm line-clamp-2">
-                        {project.description}
-                      </p>
-                      <div class="flex flex-wrap gap-1 mb-3">
-                        {project.techStack.slice(0, 3).map((tech) => (
-                          <span class="px-2 py-1 text-xs bg-blue-600/20 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 rounded">
-                            {tech}
-                          </span>
-                        ))}
-                        {project.techStack.length > 3 && (
-                          <span class="px-2 py-1 text-xs bg-gray-600/20 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400 rounded">
-                            +{project.techStack.length - 3}
-                          </span>
-                        )}
-                      </div>
-                      <div class="flex flex-wrap gap-2 text-sm">
-                        {project.visitUrl && (
-                          <a 
-                            href={project.visitUrl} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            class="btn-gradient btn-gradient-primary btn-gradient-md"
-                          >
-                            <iconify-icon icon="material-symbols:open-in-new" width="18" height="18"></iconify-icon>
-                            {i18n(I18nKey.projectsVisit)}
-                          </a>
-                        )}
-                        {project.sourceCode && (
-                          <a 
-                            href={project.sourceCode} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            class="btn-gradient btn-github btn-gradient-md"
-                          >
-                            <iconify-icon icon="mdi:github" width="18" height="18"></iconify-icon>
-                            {i18n(I18nKey.projectsGitHub)}
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          );
-        })}
-      </div>
+				<div class="kaguya-panel kaguya-metrics">
+					{metrics.map((item) => (
+						<div class="kaguya-metric">
+							<span class="kaguya-metric-value">{item.value}</span>
+							<span class="kaguya-metric-label">{item.label}</span>
+						</div>
+					))}
+				</div>
+			</div>
 
-      <!-- 技术栈统计 -->
-      <div class="mt-12 pt-8 border-t border-(--line-divider)">
-        <h2 class="text-2xl font-bold text-90 mb-4">
-          {i18n(I18nKey.projectsTechStack)}
-        </h2>
-        <div class="flex flex-wrap gap-2">
-          {allTechStack.map((tech) => (
-            <span class="px-3 py-1 text-sm bg-gray-600/20 text-70 dark:bg-gray-800 rounded-full">
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  </div>
+			<div class="kaguya-story-grid">
+				<div class="kaguya-story">
+					<p class="kaguya-section-label">{conceptTitle}</p>
+					<div class="kaguya-story-copy">
+						{conceptLines.map((line) => line ? <p>{line}</p> : <div class="kaguya-spacer" aria-hidden="true"></div>)}
+					</div>
+				</div>
+
+				<div class="kaguya-side">
+					<div class="kaguya-panel">
+						<p class="kaguya-section-label">{summaryTitle}</p>
+						<h2>{project.title}</h2>
+						<p>{project.description}</p>
+						<div class="kaguya-tags">
+							{project.techStack.map((item) => (
+								<span>{item}</span>
+							))}
+						</div>
+					</div>
+
+					<div class="kaguya-panel">
+						<p class="kaguya-section-label">{focusTitle}</p>
+						<ul class="kaguya-list">
+							{project.highlights?.map((item) => (
+								<li>{item}</li>
+							))}
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="kaguya-closing">
+				<p class="kaguya-closing-label">{closingLabel}</p>
+				<p>{closingText}</p>
+			</div>
+		</div>
+	</section>
 </MainGridLayout>
 
 <style>
-  .line-clamp-1 {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
+	.kaguya-page {
+		background:
+			radial-gradient(circle at top right, rgba(255, 216, 180, 0.24), transparent 22rem),
+			radial-gradient(circle at left center, rgba(166, 191, 255, 0.18), transparent 28rem),
+			linear-gradient(180deg, rgba(255, 252, 253, 0.98), rgba(241, 239, 247, 0.96));
+	}
+
+	.kaguya-kicker,
+	.kaguya-section-label,
+	.kaguya-closing-label,
+	.kaguya-panel-label {
+		font-size: 0.78rem;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: rgb(149 118 141);
+	}
+
+	.kaguya-title {
+		max-width: 12ch;
+		font-size: clamp(2.8rem, 8vw, 5.4rem);
+		line-height: 1.02;
+		font-weight: 800;
+		letter-spacing: 0.03em;
+		margin-top: 0.6rem;
+		color: rgb(29 34 52);
+	}
+
+	.kaguya-subtitle {
+		max-width: 42rem;
+		margin-top: 1rem;
+		font-size: 1.12rem;
+		line-height: 1.8;
+		color: rgb(82 83 104 / 0.88);
+	}
+
+	.kaguya-hero-grid,
+	.kaguya-story-grid {
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	.kaguya-hero-grid {
+		grid-template-columns: 1.7fr 1fr;
+		margin-top: 2rem;
+	}
+
+	.kaguya-story-grid {
+		grid-template-columns: 1.6fr 1fr;
+		margin-top: 1.5rem;
+	}
+
+	.kaguya-panel,
+	.kaguya-story,
+	.kaguya-closing {
+		border: 1px solid rgba(129, 113, 143, 0.12);
+		border-radius: 1.5rem;
+		padding: 1.4rem;
+		background: rgba(255, 255, 255, 0.72);
+		backdrop-filter: blur(10px);
+		box-shadow: 0 18px 50px rgba(72, 52, 79, 0.08);
+	}
+
+	.kaguya-progress-row,
+	.kaguya-metrics {
+		display: flex;
+	}
+
+	.kaguya-progress-row {
+		align-items: end;
+		gap: 1rem;
+		margin-top: 0.55rem;
+	}
+
+	.kaguya-progress-value {
+		font-size: clamp(3rem, 8vw, 5rem);
+		line-height: 1;
+		font-weight: 800;
+		color: rgb(36 42 68);
+	}
+
+	.kaguya-progress-status {
+		padding-bottom: 0.7rem;
+		font-size: 0.85rem;
+		letter-spacing: 0.16em;
+		color: rgb(221 135 53);
+	}
+
+	.kaguya-progress-track {
+		height: 0.8rem;
+		margin-top: 1rem;
+		border-radius: 999px;
+		background: rgba(79, 69, 92, 0.09);
+		overflow: hidden;
+	}
+
+	.kaguya-progress-fill {
+		width: 1%;
+		height: 100%;
+		border-radius: inherit;
+		background: linear-gradient(90deg, rgb(253 172 205), rgb(252 199 128));
+	}
+
+	.kaguya-progress-note,
+	.kaguya-story-copy p,
+	.kaguya-panel p,
+	.kaguya-list {
+		color: rgb(74 76 96 / 0.9);
+		line-height: 1.9;
+	}
+
+	.kaguya-progress-note {
+		margin-top: 1rem;
+	}
+
+	.kaguya-metrics {
+		flex-direction: column;
+		gap: 1rem;
+		justify-content: center;
+		height: 100%;
+	}
+
+	.kaguya-metric {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
+		padding-bottom: 0.9rem;
+		border-bottom: 1px solid rgba(129, 113, 143, 0.12);
+	}
+
+	.kaguya-metric:last-child {
+		border-bottom: 0;
+		padding-bottom: 0;
+	}
+
+	.kaguya-metric-value {
+		font-size: 1.8rem;
+		font-weight: 700;
+		color: rgb(34 39 65);
+	}
+
+	.kaguya-metric-label {
+		color: rgb(103 101 124);
+	}
+
+	.kaguya-story-copy {
+		display: flex;
+		flex-direction: column;
+		gap: 0.8rem;
+		margin-top: 0.9rem;
+	}
+
+	.kaguya-spacer {
+		height: 0.35rem;
+	}
+
+	.kaguya-side {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	.kaguya-panel h2 {
+		margin-top: 0.55rem;
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: rgb(34 39 65);
+	}
+
+	.kaguya-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.55rem;
+		margin-top: 1rem;
+	}
+
+	.kaguya-tags span {
+		padding: 0.38rem 0.72rem;
+		border-radius: 999px;
+		background: rgba(235, 224, 239, 0.88);
+		color: rgb(101 81 108);
+		font-size: 0.8rem;
+	}
+
+	.kaguya-list {
+		margin-top: 0.8rem;
+		padding-left: 1rem;
+	}
+
+	.kaguya-list li + li {
+		margin-top: 0.5rem;
+	}
+
+	.kaguya-closing {
+		margin-top: 1.5rem;
+	}
+
+	.kaguya-closing p:last-child {
+		margin-top: 0.55rem;
+		font-size: clamp(1.2rem, 3vw, 1.8rem);
+		font-weight: 600;
+		color: rgb(40 42 70);
+	}
+
+	.kaguya-orbit {
+		position: absolute;
+		border: 1px solid rgba(255, 196, 222, 0.4);
+		border-radius: 999px;
+		pointer-events: none;
+	}
+
+	.kaguya-orbit-one {
+		top: -6rem;
+		right: -3rem;
+		width: 19rem;
+		height: 19rem;
+	}
+
+	.kaguya-orbit-two {
+		bottom: 2rem;
+		right: 8rem;
+		width: 8rem;
+		height: 8rem;
+	}
+
+	.kaguya-glow {
+		position: absolute;
+		top: 3.5rem;
+		right: 7rem;
+		width: 5rem;
+		height: 5rem;
+		border-radius: 999px;
+		background: radial-gradient(circle, rgba(255, 240, 180, 0.95), rgba(255, 240, 180, 0.06));
+		filter: blur(2px);
+		pointer-events: none;
+	}
+
+	@media (max-width: 960px) {
+		.kaguya-hero-grid,
+		.kaguya-story-grid {
+			grid-template-columns: 1fr;
+		}
+	}
 </style>

@@ -1,6 +1,3 @@
-// Project data configuration file
-// Used to manage data for the project display page
-
 export interface Project {
 	id: string;
 	title: string;
@@ -15,107 +12,44 @@ export interface Project {
 	endDate?: string;
 	featured?: boolean;
 	tags?: string[];
-	visitUrl?: string; // 添加前往项目链接字段
+	visitUrl?: string;
+	progress?: number;
+	highlights?: string[];
 }
 
 export const projectsData: Project[] = [
 	{
-		id: "mizuki-blog",
-		title: "Mizuki Blog Theme",
+		id: "kaguya-ai",
+		title: "KAGUYA AI \u958b\u767a\u30d7\u30ed\u30b8\u30a7\u30af\u30c8",
 		description:
-			"Modern blog theme developed based on the Astro framework, supporting multilingual, dark mode, and responsive design features.",
+			"\u6708\u3068\u672a\u6765\u3092\u7d50\u3076 KAGUYA AI \u306e\u958b\u767a\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u3002",
 		image: "",
-		category: "web",
-		techStack: ["Astro", "TypeScript", "Tailwind CSS", "Svelte"],
-		status: "completed",
-		liveDemo: "https://blog.example.com",
-		sourceCode: "https://github.com/example/mizuki", // 更改为GitHub链接
-		visitUrl: "https://blog.example.com", // 添加前往项目链接
-		startDate: "2024-01-01",
-		endDate: "2024-06-01",
-		featured: true,
-		tags: ["Blog", "Theme", "Open Source"],
-	},
-	{
-		id: "portfolio-website",
-		title: "Personal Portfolio",
-		description:
-			"Personal portfolio website showcasing project experience and technical skills.",
-		image: "",
-		category: "web",
-		techStack: ["React", "Next.js", "TypeScript", "Framer Motion"],
-		status: "completed",
-		liveDemo: "https://portfolio.example.com",
-		sourceCode: "https://github.com/example/portfolio",
-		visitUrl: "https://portfolio.example.com", // 添加前往项目链接
-		startDate: "2023-09-01",
-		endDate: "2023-12-01",
-		featured: true,
-		tags: ["Portfolio", "React", "Animation"],
-	},
-	{
-		id: "task-manager-app",
-		title: "Task Manager App",
-		description:
-			"Cross-platform task management application supporting team collaboration and project management.",
-		image: "",
-		category: "mobile",
-		techStack: ["React Native", "TypeScript", "Redux", "Firebase"],
+		category: "other",
+		techStack: ["\u4eba\u5de5\u77e5\u80fd", "\u672a\u6765\u63a5\u7d9a", "\u6708\u5149\u30c7\u30b6\u30a4\u30f3"],
 		status: "in-progress",
-		startDate: "2024-03-01",
-		tags: ["Mobile", "Productivity", "Team Collaboration"],
-	},
-	{
-		id: "data-visualization-tool",
-		title: "Data Visualization Tool",
-		description:
-			"Data visualization tool supporting multiple chart types and interactive analysis.",
-		image: "",
-		category: "web",
-		techStack: ["Vue.js", "D3.js", "TypeScript", "Node.js"],
-		status: "completed",
-		liveDemo: "https://dataviz.example.com",
-		visitUrl: "https://dataviz.example.com", // 添加前往项目链接
-		startDate: "2023-06-01",
-		endDate: "2023-11-01",
-		tags: ["Data Visualization", "Analytics", "Charts"],
-	},
-	{
-		id: "e-commerce-platform",
-		title: "E-commerce Platform",
-		description:
-			"Full-stack e-commerce platform including user management, product management, and order processing features.",
-		image: "",
-		category: "web",
-		techStack: ["Next.js", "Node.js", "PostgreSQL", "Stripe"],
-		status: "planned",
-		startDate: "2024-07-01",
-		tags: ["E-commerce", "Full Stack", "Payment Integration"],
+		startDate: "2026-03-11",
+		featured: true,
+		tags: ["\u6708", "AI", "\u672a\u6765", "\u958b\u767a"],
+		progress: 1,
+		highlights: [
+			"\u6708\u3092\u30e2\u30c1\u30fc\u30d5\u306b\u3057\u305f AI \u958b\u767a",
+			"\u672a\u6765\u3078\u3064\u306a\u304c\u308b\u30d3\u30b8\u30e7\u30f3",
+			"\u9759\u304b\u306b\u5bc4\u308a\u6dfb\u3046\u30c7\u30b6\u30a4\u30f3\u601d\u60f3",
+		],
 	},
 ];
 
-// Get project statistics
 export const getProjectStats = () => {
-	const total = projectsData.length;
-	const completed = projectsData.filter(
-		(p) => p.status === "completed",
-	).length;
-	const inProgress = projectsData.filter(
-		(p) => p.status === "in-progress",
-	).length;
-	const planned = projectsData.filter((p) => p.status === "planned").length;
-
 	return {
-		total,
+		total: projectsData.length,
 		byStatus: {
-			completed,
-			inProgress,
-			planned,
+			completed: 0,
+			inProgress: 1,
+			planned: 0,
 		},
 	};
 };
 
-// Get projects by category
 export const getProjectsByCategory = (category?: string) => {
 	if (!category || category === "all") {
 		return projectsData;
@@ -123,12 +57,10 @@ export const getProjectsByCategory = (category?: string) => {
 	return projectsData.filter((p) => p.category === category);
 };
 
-// Get featured projects
 export const getFeaturedProjects = () => {
 	return projectsData.filter((p) => p.featured);
 };
 
-// Get all tech stacks
 export const getAllTechStack = () => {
 	const techSet = new Set<string>();
 	projectsData.forEach((project) => {
@@ -136,5 +68,5 @@ export const getAllTechStack = () => {
 			techSet.add(tech);
 		});
 	});
-	return Array.from(techSet).sort();
+	return Array.from(techSet);
 };

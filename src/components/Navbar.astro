@@ -52,8 +52,13 @@ const iconSrc = rawIcon.match(/^(http|https|\/\/)/) ? rawIcon : url(rawIcon);
                         <img src={logoSrc} alt={siteConfig.navbarTitle.text} class="h-10 md:h-13 md:in-[.enable-banner]:h-10 md:in-[.enable-banner]:group-[.scrolled]:h-13 max-w-full object-contain transition-all duration-300" loading="lazy" />
                     ) : (
                         <>
-                            <img src={iconSrc} alt={siteConfig.navbarTitle.text} class="h-7 w-7 mr-2 object-contain" loading="lazy" />
-                            <span>{siteConfig.navbarTitle.text}</span>
+                            <img
+                                src={iconSrc}
+                                alt={siteConfig.navbarTitle.text}
+                                class="h-8 w-8 mr-2.5 rounded-xl object-cover bg-white/60 p-0.5 shadow-sm ring-1 ring-black/6 dark:bg-white/8 dark:ring-white/10"
+                                loading="lazy"
+                            />
+                            <span class="tracking-[0.02em]">{siteConfig.navbarTitle.text}</span>
                         </>
                     )
                 ) : (
