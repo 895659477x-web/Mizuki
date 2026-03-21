@@ -185,11 +185,11 @@ export const skillsData: Skill[] = [
 		id: "python",
 		name: "Python",
 		description:
-			"A general-purpose programming language suitable for web development, data analysis, machine learning, and more.",
+			"Currently learning Python for automation, lightweight tools, and AI-related experiments.",
 		icon: "logos:python",
 		category: "backend",
-		level: "intermediate",
-		experience: { years: 1, months: 10 },
+		level: "beginner",
+		experience: { years: 0, months: 6 },
 		color: "#3776AB",
 	},
 	{

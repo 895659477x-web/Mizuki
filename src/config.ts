@@ -42,7 +42,7 @@ export const siteConfig: SiteConfig = {
 		diary: true, // 日记页面开关
 		friends: false, // 友链页面开关
 		projects: true, // 项目页面开关
-		skills: false, // 技能页面开关
+		skills: true, // 技能页面开关
 		timeline: true, // 时间线页面开关
 		albums: true, // 相册页面开关
 		devices: false, // 设备页面开关
@@ -375,7 +375,7 @@ export const shareConfig: ShareConfig = {
 
 export const announcementConfig: AnnouncementConfig = {
 	title: "", // ??????????????????i18n??????Key.announcement
-	content: "\u6708\u304b\u3089\u5c4a\u304f\u8a08\u753b\u306e\u4fbf\u308a\u3002\u3054\u9023\u7d61\u306f 895659477x@gmail.com \u3078\u3002", // ???????
+	content: "\u6708\u304b\u3089\u306e\u4fbf\u308a\u3092\u3001\u3053\u3053\u306b\u3002\u6708\u3078\u306e\u30e1\u30c3\u30bb\u30fc\u30b8\u3082\u3001\u3053\u3061\u3089\u3078\u3002\nai@zera.jp", // ???????
 	closable: false, // ????????????????
 	link: {
 		enable: true, // ????????

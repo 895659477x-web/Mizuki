@@ -40,7 +40,6 @@ let pioCanvas;
 let isHiddenForViewport = false;
 let isChatOpen = false;
 let chatInput = "";
-let chatMessages = [{ role: "assistant", text: labels.greeting }];
 
 function getAvailablePages() {
   const pages = [];
@@ -57,10 +56,6 @@ function speak(text, time = 5000) {
   if (pioInstance && typeof pioInstance.message === "function") {
     pioInstance.message(text, { time });
   }
-}
-
-function pushMessage(role, text) {
-  chatMessages = [...chatMessages, { role, text }].slice(-8);
 }
 
 function navigateTo(href) {
@@ -138,9 +133,7 @@ function handleAsk(rawText) {
   const text = rawText.trim();
   if (!text) return;
 
-  pushMessage("user", text);
   const reply = buildReply(text);
-  pushMessage("assistant", reply);
   chatInput = "";
   isChatOpen = true;
   speak(reply, 6000);
@@ -213,31 +206,8 @@ onDestroy(() => {
 {#if pioConfig.enable && !isHiddenForViewport}
   <div class={`pio-container ${pioConfig.position || "right"}`} bind:this={pioContainer}>
     <div class="assistant-shell">
-      <button
-        type="button"
-        class="assistant-toggle"
-        on:click|stopPropagation={openChatWithGreeting}
-        aria-expanded={isChatOpen}
-        aria-label="\u6848\u5185\u30c1\u30e3\u30c3\u30c8\u3092\u958b\u304f"
-      >
-        {labels.talk}
-      </button>
-
       {#if isChatOpen}
-        <div class="assistant-panel">
-          <div class="assistant-header">
-            <strong>{labels.title}</strong>
-            <button type="button" class="assistant-close" on:click={() => (isChatOpen = false)}>{labels.close}</button>
-          </div>
-
-          <div class="assistant-messages">
-            {#each chatMessages as message}
-              <div class={`assistant-message ${message.role}`}>
-                {message.text}
-              </div>
-            {/each}
-          </div>
-
+        <div class="assistant-menu">
           <div class="assistant-quick-actions">
             {#each quickActions as action}
               <button type="button" class="assistant-chip" on:click={() => handleAsk(action.prompt)}>
@@ -250,16 +220,18 @@ onDestroy(() => {
             <input type="text" bind:value={chatInput} placeholder={labels.placeholder} maxlength="80" />
             <button type="submit">{labels.send}</button>
           </form>
-
-          <div class="assistant-links">
-            <button type="button" class="assistant-link" on:click={() => navigateTo("/about/")}>\u7d39\u4ecb</button>
-            <button type="button" class="assistant-link" on:click={() => navigateTo("/archive/")}>\u8a18\u9332</button>
-            {#if siteConfig.featurePages?.projects}
-              <button type="button" class="assistant-link" on:click={() => navigateTo("/projects/")}>\u8a08\u753b</button>
-            {/if}
-          </div>
         </div>
       {/if}
+
+      <button
+        type="button"
+        class="assistant-toggle"
+        on:click|stopPropagation={openChatWithGreeting}
+        aria-expanded={isChatOpen}
+        aria-label="\u6848\u5185\u30c1\u30e3\u30c3\u30c8\u3092\u958b\u304f"
+      >
+        {labels.talk}
+      </button>
     </div>
 
     <div class="pio-action"></div>
@@ -270,7 +242,7 @@ onDestroy(() => {
 <style>
   .assistant-shell {
     position: absolute;
-    top: 0.45rem;
+    top: -8.3rem;
     right: 0.6rem;
     z-index: 4;
     display: flex;
@@ -287,84 +259,40 @@ onDestroy(() => {
   .assistant-toggle {
     border: 0;
     border-radius: 999px;
-    padding: 0.45rem 0.9rem;
-    font-size: 0.78rem;
+    padding: 0.38rem 0.8rem;
+    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.02em;
     color: #6c4b62;
     background: rgba(255, 248, 252, 0.96);
-    box-shadow: 0 10px 28px rgba(86, 62, 80, 0.14);
+    box-shadow: 0 8px 22px rgba(86, 62, 80, 0.12);
     cursor: pointer;
   }
 
-  .assistant-panel {
-    width: 18rem;
-    margin-top: 0.45rem;
-    padding: 0.8rem;
-    border-radius: 1rem;
+  .assistant-menu {
+    width: 13.6rem;
+    margin-top: 0;
+    margin-bottom: 0.4rem;
+    padding: 0.55rem;
+    border-radius: 0.9rem;
     border: 1px solid rgba(120, 92, 117, 0.14);
-    background: rgba(255, 252, 254, 0.97);
+    background: rgba(255, 252, 254, 0.82);
     backdrop-filter: blur(10px);
-    box-shadow: 0 16px 40px rgba(67, 48, 66, 0.16);
-  }
-
-  .assistant-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.6rem;
-    color: #6c4b62;
-  }
-
-  .assistant-close {
-    border: 0;
-    background: transparent;
-    font-size: 1rem;
-    cursor: pointer;
-    color: #8b6b82;
-  }
-
-  .assistant-messages {
-    display: flex;
-    flex-direction: column;
-    gap: 0.45rem;
-    max-height: 12rem;
-    overflow: auto;
-    padding-right: 0.1rem;
-  }
-
-  .assistant-message {
-    padding: 0.55rem 0.7rem;
-    border-radius: 0.85rem;
-    font-size: 0.78rem;
-    line-height: 1.45;
-  }
-
-  .assistant-message.assistant {
-    background: #fff;
-    color: #5f4a5a;
-    border: 1px solid rgba(120, 92, 117, 0.08);
-  }
-
-  .assistant-message.user {
-    background: #f6e4ef;
-    color: #714d68;
-    margin-left: 1.6rem;
+    box-shadow: 0 10px 24px rgba(67, 48, 66, 0.1);
   }
 
   .assistant-quick-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.45rem;
-    margin-top: 0.7rem;
+    gap: 0.35rem;
+    margin-top: 0.55rem;
   }
 
-  .assistant-chip,
-  .assistant-link {
+  .assistant-chip {
     border: 0;
     border-radius: 999px;
-    padding: 0.4rem 0.7rem;
-    font-size: 0.72rem;
+    padding: 0.33rem 0.58rem;
+    font-size: 0.68rem;
     cursor: pointer;
     background: #f5eaf1;
     color: #6f5369;
@@ -372,35 +300,40 @@ onDestroy(() => {
 
   .assistant-form {
     display: flex;
-    gap: 0.45rem;
-    margin-top: 0.75rem;
+    gap: 0.35rem;
+    margin-top: 0.45rem;
   }
 
   .assistant-form input {
     flex: 1;
     min-width: 0;
     border: 1px solid rgba(120, 92, 117, 0.14);
-    border-radius: 0.75rem;
-    padding: 0.55rem 0.7rem;
-    font-size: 0.78rem;
+    border-radius: 0.7rem;
+    padding: 0.46rem 0.62rem;
+    font-size: 0.72rem;
     background: #fff;
   }
 
   .assistant-form button {
     border: 0;
-    border-radius: 0.75rem;
-    padding: 0.55rem 0.8rem;
-    font-size: 0.78rem;
+    border-radius: 0.7rem;
+    padding: 0.46rem 0.68rem;
+    font-size: 0.72rem;
     font-weight: 700;
     cursor: pointer;
     background: #efb7d2;
     color: #5b3a51;
   }
 
-  .assistant-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.45rem;
-    margin-top: 0.7rem;
+  @media (max-width: 768px) {
+    .assistant-shell {
+      top: -7.6rem;
+      right: 0.25rem;
+    }
+
+    .assistant-menu {
+      width: 12.3rem;
+      margin-bottom: 0.35rem;
+    }
   }
 </style>
