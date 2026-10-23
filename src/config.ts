@@ -9,6 +9,8 @@ import type {
 	NavBarConfig,
 	PermalinkConfig,
 	ProfileConfig,
+	RandomPostsConfig,
+	RelatedPostsConfig,
 	SakuraConfig,
 	ShareConfig,
 	SidebarLayoutConfig,
@@ -174,7 +176,9 @@ export const siteConfig: SiteConfig = {
 	},
 	toc: {
 		enable: true, // ???????????
-		mode: "sidebar", // ?????????????float" ?????????????sidebar" ??????????
+		mobileTop: true,
+		desktopSidebar: true,
+		floating: false,
 		depth: 2, // ??????????-6?? ?????????? h1 ?????? ???????? h1 ??h2 ??????????????
 		useJapaneseBadge: true, // ????????????????????????...??????????????????????1????... ???? ????????...
 	},
@@ -204,6 +208,15 @@ export const siteConfig: SiteConfig = {
 		},
 	},
 	showLastModified: true,
+	pageProgressBar: {
+		enable: true,
+		height: 3,
+		duration: 6000,
+	},
+	thirdPartyAnalytics: {
+		enable: false,
+		clarityId: "",
+	},
 };
 
 export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
@@ -375,7 +388,8 @@ export const shareConfig: ShareConfig = {
 
 export const announcementConfig: AnnouncementConfig = {
 	title: "", // ??????????????????i18n??????Key.announcement
-	content: "\u6708\u304b\u3089\u306e\u4fbf\u308a\u3092\u3001\u3053\u3053\u306b\u3002\u6708\u3078\u306e\u30e1\u30c3\u30bb\u30fc\u30b8\u3082\u3001\u3053\u3061\u3089\u3078\u3002\nai@zera.jp", // ???????
+	content:
+		"\u6708\u304b\u3089\u306e\u4fbf\u308a\u3092\u3001\u3053\u3053\u306b\u3002\u6708\u3078\u306e\u30e1\u30c3\u30bb\u30fc\u30b8\u3082\u3001\u3053\u3061\u3089\u3078\u3002\nai@zera.jp", // ???????
 	closable: false, // ????????????????
 	link: {
 		enable: true, // ????????
@@ -387,6 +401,8 @@ export const announcementConfig: AnnouncementConfig = {
 
 export const musicPlayerConfig: MusicPlayerConfig = {
 	enable: false, // 启用音乐播放器功能
+	showFloatingPlayer: false,
+	floatingEntryMode: "fab",
 	mode: "meting", // 音乐播放器模式，可选 "local" 或 "meting"
 	meting_api:
 		"https://meting.mysqil.com/api?server=:server&type=:type&id=:id&auth=:auth&r=:r", // Meting API 地址
@@ -551,7 +567,8 @@ export const pioConfig: import("./types/config").PioConfig = {
 	mode: "draggable", // 默认为可拖拽模式
 	hiddenOnMobile: true, // 默认在移动设备上隐藏
 	dialog: {
-		welcome: "\u004b\u0041\u0047\u0055\u0059\u0041 \u0041\u0049 \u3078\u3088\u3046\u3053\u305d\u3002\u6708\u304b\u3089\u9759\u304b\u306b\u3054\u6848\u5185\u3057\u307e\u3059\u3002", // 欢迎词
+		welcome:
+			"\u004b\u0041\u0047\u0055\u0059\u0041 \u0041\u0049 \u3078\u3088\u3046\u3053\u305d\u3002\u6708\u304b\u3089\u9759\u304b\u306b\u3054\u6848\u5185\u3057\u307e\u3059\u3002", // 欢迎词
 		touch: [
 			"\u305d\u3093\u306a\u306b\u8fd1\u304f\u3067\u898b\u308b\u306e\uff1f",
 			"\u304f\u3059\u3050\u3063\u305f\u3044\u306e\u3067\u3001\u3084\u3055\u3057\u304f\u304a\u9858\u3044\u3057\u307e\u3059\u3002",
@@ -559,10 +576,23 @@ export const pioConfig: import("./types/config").PioConfig = {
 			"\u3082\u3046\u5c11\u3057\u9759\u304b\u306b\u89e6\u308c\u3066\u304f\u3060\u3055\u3044\u306d\u3002",
 		], // 触摸提示
 		home: "\u3053\u3053\u304b\u3089\u6708\u306e\u5165\u53e3\u3078\u623b\u308c\u307e\u3059\u3002", // 首页提示
-		skin: ["\u65b0\u3057\u3044\u88c5\u3044\u3001\u898b\u3066\u307f\u307e\u3059\u304b\u3002", "\u6708\u5149\u306b\u4f3c\u5408\u3046\u59ff\u3092\u9078\u3093\u3067\u307f\u307e\u3057\u305f\u3002"], // 换装提示
+		skin: [
+			"\u65b0\u3057\u3044\u88c5\u3044\u3001\u898b\u3066\u307f\u307e\u3059\u304b\u3002",
+			"\u6708\u5149\u306b\u4f3c\u5408\u3046\u59ff\u3092\u9078\u3093\u3067\u307f\u307e\u3057\u305f\u3002",
+		], // 换装提示
 		close: "\u307e\u305f\u6708\u660e\u304b\u308a\u306e\u4e0b\u3067\u4f1a\u3044\u307e\u3057\u3087\u3046\u3002", // 关闭提示
 		link: "kaguyaai.com", // 关于链接
 	},
+};
+
+export const relatedPostsConfig: RelatedPostsConfig = {
+	enable: true,
+	maxCount: 5,
+};
+
+export const randomPostsConfig: RandomPostsConfig = {
+	enable: true,
+	maxCount: 5,
 };
 
 // 导出所有配置的统一接口
@@ -575,6 +605,8 @@ export const widgetConfigs = {
 	fullscreenWallpaper: fullscreenWallpaperConfig,
 	pio: pioConfig,
 	share: shareConfig,
+	relatedPosts: relatedPostsConfig,
+	randomPosts: randomPostsConfig,
 } as const;
 
 // umamiConfig相关配置已移动至astro.config.mjs中,统计脚本请自行在Layout.astro文件的<head>中插入
